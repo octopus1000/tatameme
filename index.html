@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+	<script type="text/javascript" src="js/loadQuestions.js"></script>
+</head>
+<body>
+	<div data-role="panel" class="ui-panel" data-position="left" data-display="push" id="qPanel">
+		<p>panel for nav through questions</p>
+		<ul  data-role="listview" id='qList'>
+		</ul>
+		<br>
+		<br>
+		<a data-rel="close" href="#" class="ui-btn">Close</a>
+	</div>
+	<div data-role="page">
+		<div data-role="header">
+			<h1> Hello World</h1>
+			<a href="#qPanel">Open Panel</a>
+		</div>
+		<div role="main" class="ui-content">
+			<a class="ui-btn" href="#page0">Start to Answer</a>
+		</div>
+		<div data-role="footer"></div>
+	</div>
+</body>
+</html>

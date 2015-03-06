@@ -1,0 +1,31 @@
+{
+	"wechat_id" : "wechat_id",
+	"questions" : [
+	{
+		"title" :"q1",
+		"answers" : ["a1","a2","a3","a4"],
+		"ra": 0
+		},
+		{
+			"title" :"q2",
+			"answers" : ["a1","a2","a3","a4"],
+			"ra": 0			
+		},
+		{
+			"title" :"q3",
+			"answers" : ["a1","a2","a3","a4"],
+			"ra": 0			
+		},
+		{
+			"title" :"q4",
+			"answers" : ["a1","a2","a3","a4"],
+			"ra": 0			
+		},
+		{
+			"title" :"q5",
+			"answers" : ["a1","a2","a3","a4"],
+			"ra": 0			
+		}
+	]
+	
+}
