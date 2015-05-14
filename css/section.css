@@ -21,7 +21,7 @@ footer{
 	padding: 15px;
 	text-decoration: none;
 }
-.next-link:active{
+.next-link:focus{
 	background: blue;
 }
 .next-link .glyphicon{
