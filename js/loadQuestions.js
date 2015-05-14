@@ -1,94 +1,30 @@
-$(function(){
-	/*show loading indicator*/
-	$.mobile.loading("show");
-	/*manually initate the panel else external panel wont work properly*/
-	$("body > [data-role='panel']").panel();
+window.addEventListener("load",init);
 
-	$("#qList").listview();
-	/*load questions from json*/
+function init(){
+
+	/*perepare work*/
+
 	var url = "qs.json";
-	$.ajax({
-		dataType:"json",
-		url: url,
-		success:function(data){
-			$.mobile.loading("hide");
-			$.each(data.questions, function(i, item){
-				loadQuestion(i, item, data.questions.length);
-			});
+	var r = new XMLHttpRequest();
+	r.open("GET", url, true);
+	r.onreadystatechange = function () {
+		if (r.readyState != 4 || r.status != 200) return;
+		data = JSON.parse(r.responseText);
+		for(var i = 0; i < data.questions.length; ++i){
+			loadQuestion(i+1, data.questions[i], data.questions.length);
 		}
-	});
-});
+	};
+	r.send();
+}
+
+/*generated through doT.js*/
+function questionTmp(it, i , num)  { var out='<div class="list-group"><a class="list-group-item active"><h4>Q'+(i)+'. '+(it.title)+'</h4></a>';var arr1=it.answers;if(arr1){var value,index=-1,l1=arr1.length-1;while(index<l1){value=arr1[index+=1];out+='<a class="list-group-item">'+(value)+'</a>';} } out+='</div><footer>';if(i < num){out+='<a class="next-link" href="#q'+(i+1)+'"><div class="row"><span>Next Question</span></div><div class="row"><span class="glyphicon glyphicon-menu-down"></span></div></a>';}if(i >= num){out+='<a class="next-link" href="#q'+(i+1)+'"><span>Submit</span></a>';}return out; }
 
 function loadQuestion(i,item,num){
-	/*create page frame*/
-	var panelBtn = $('<a/>',{
-		'text' : 'nav through Qs',
-		'href' : '#qPanel'
-	})
-	var title = $('<h1/>',{
-		"text" : "title"+(i+1)
-	})
-	var header = $('<div/>',{
-		"data-role":'header'
-	});
-	var footer = $('<div/>',{
-		"data-role":'footer'
-	}); 
-	var main = $('<div/>',{
-		"class":"ui-content",
-		"role":'main'
-	}); 
-	var page = $('<div/>',{
-		id:"page"+i,
-		"data-role":'page' 
-	});
-	var prev = $('<a/>',{
-		text : 'prev',
-		"href": i > 0 ? "#page"+ (i-1) : "#"
-	});
-	var next = $('<a/>',{
-		text:'next',
-		"href": i < num - 1 ? "#page" + (i+1) :"#"
-	});
-	
-	/*create questions*/
-	var qtitle = $('<label/>',{
-		text:item.title
-	});
-	var as = [];
-	$.each(item.answers,function(index,answer){
-		var id = 'p' + i + 'a' + index;//page[i] answer[index] i= 0...n-1
-		var name = 'p' + i;//page[i]
-		var ansTag = $('<input/>',{
-			'id' : id,
-			'name' : name,
-			'type' : 'radio'
-		});
-		var ansLabel = $('<label>',{
-			'text' : answer,
-			'for' : id
-		});
-		as.push(ansTag);
-		as.push(ansLabel);
-		as.push($('<br>'));
-	});
-	
-	/*assemble elements and inject into dom*/
-	header.append(panelBtn).append(title);
-	footer.append(prev).append(next);
-	main.append(qtitle).append(as);
-	page.append(header).append(main).append(footer);
-	$('body').append(page);
+	/*cause template only generate string, i have to create outer element myself*/
+	var q = document.createElement('section');
+	q.id = 'q'+ i;
 
-	/*update panel*/
-	var li = $('<li/>');
-	var a = $('<a/>',{
-		'href' : '#page'+i,
-		'text' : 'q' + (i + 1)
-	}).appendTo(li);
-	li.appendTo('#qList');
-	$("#qList").listview('refresh');
-	/*if(i == 0){
-		$.mobile.pageContainer.pagecontainer("change", "#page0");
-	}*/
+	q.innerHTML = questionTmp(item,i,num);
+	document.body.appendChild(q);
 }

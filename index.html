@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/section.css">
-	<!--<script type="text/javascript" src="js/loadQuestions.js"></script>-->
+	<script type="text/javascript" src="js/loadQuestions.js"></script>
 </head>
 <body>
 	<!--start page-->
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<footer>
-			<a class="next-link">
+			<a class="next-link" href="#q1">
 				<div class="row">
 					<span>Start to Answer</span>
 				</div>
@@ -29,26 +29,35 @@
 	</section>
 
 	<!--template for questions-->
-	<section class="container-fluid">
+	<!--
+	<section id="q{{=i}}">
 		<div class="list-group">
 			<a class="list-group-item active">
-				<h4>Q1. What is my favorate programming language?</h4>
+				<h4>Q{{=i}}. {{=it.title}}</h4>
 			</a>
-			<a class="list-group-item">Answer 1</a>
-			<a class="list-group-item">Answer 2</a>
-			<a class="list-group-item">Answer 3</a>
-			<a class="list-group-item">Answer 4</a>
+			{{~it.answers :value:index}}
+			<a class="list-group-item">{{=value}}</a>
+			{{~}}
 		</div>
 		<footer>
-			<a class="next-link">
+		{{? i < num}}
+			<a class="next-link" href="#q{{=i+1}}">
 				<div class="row">
-					<span>Next question</span>
+					<span>Next Question</span>
 				</div>
 				<div class="row">
 					<span class="glyphicon glyphicon-menu-down"></span>
 				</div>
 			</a>
-		</footer>		
+		{{?}}
+		{{? i >= num}}
+			<a class="next-link" href="#q{{=i+1}}">
+					<span>Submit</span>
+			</a>
+		{{?}}		
+		</footer>
+		
 	</section>
+	-->
 </body>
 </html>
