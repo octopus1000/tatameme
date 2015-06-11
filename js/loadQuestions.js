@@ -36,7 +36,7 @@ function loadPredefinedQuestion(url){
 }
 
 /*generated through doT.js return a string*/
-function questionTmp(it, i , num) { var out='<div class="list-group"><a class="list-group-item active"><h4>Q'+(i)+'. '+(it.title)+'</h4></a>';var arr1=it.answers;if(arr1){var value,index=-1,l1=arr1.length-1;while(index<l1){value=arr1[index+=1];out+='<div class="radio list-group-item"><label><input type="radio" name="q'+(i)+'" value="'+(i)+'">'+(value)+'</label></div>';} } out+='</div><footer>';if(i < num){out+='<a class="next-link" href="#q'+(i+1)+'"><div class="row"><span>Next Question</span></div><div class="row"><span class="glyphicon glyphicon-menu-down"></span></div></a>';}if(i >= num){out+='<a class="next-link" href="#q'+(i+1)+'"><span>Submit</span></a>';}out+='</footer>';return out; }
+function questionTmp(it, i , num) { var out='<div class="list-group"><a class="list-group-item active"><h4>Q'+(i)+'. '+(it.title)+'</h4></a>';var arr1=it.answers;if(arr1){var value,index=-1,l1=arr1.length-1;while(index<l1){value=arr1[index+=1];out+='<div class="radio list-group-item"><label><input type="radio" name="q'+(i)+'" value="'+(i)+'">'+(value)+'</label></div>';} } out+='</div><footer>';if(i < num){out+='<a class="next-link" href="#q'+(i+1)+'"><div><span>Next Question</span></div><div><span class="glyphicon glyphicon-menu-down"></span></div></a>';}if(i >= num){out+='<a class="next-link" href="#q'+(i+1)+'"><span>Submit</span></a>';}out+='</footer>';return out; }
 
 function changeQuestionType(){
 	//if qt1 = []? if qt2 = []?
