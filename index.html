@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/section.css">
-	<script type="text/javascript" src="js/loadQuestions.js"></script>
+    <script type="text/javascript" src="js/editQuestion.js"></script>
+    <script type="text/javascript" src="js/loadQuestions.js"></script>
 
 	<!--toggle-->
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -74,17 +75,33 @@
 
 	<!--template for create user defined question-->
 	<section>
-		<div class="list-group">
-			<a class="list-group-item active">
-				<h4><span>Q{{=i}}. </span><span contenteditable>{{=it.title}}</span></h4>
-			</a>
-			<div class="radio list-group-item">
-				<label>
-					<input type="radio" name="q{{=i}}" value="{{=i}}">
-					{{=value}}
-				</label>
-			</div>
-		</div>
+        <form class="container-fluid form-horizontal">
+            <input class="form-control" type="text" placeholder="Title">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <input type="radio" aria-label="...">
+                </span>
+                <input class="form-control" type="text" placeholder="Answer">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <input type="radio" aria-label="...">
+                </span>
+                <input class="form-control" type="text" placeholder="Answer">
+            </div>
+            <button type="button" class="btn btn-default t-btn-add">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <button type="button" class="btn btn-default t-btn-next">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+            </button>
+        </form>
 	</section>
 </body>
 </html>

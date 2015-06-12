@@ -11,6 +11,8 @@ function init(){
 	//jquery function
 	$('#questionType').bootstrapToggle("off");
 	$('#questionType').change(changeQuestionType);
+	$('.t-btn-add').click(addNewAnswer);
+	$('.t-btn-next').click(addNewQuestion);
 	
 	//load predefined questions
 	//loadPredefinedQuestion("qs.json");
@@ -22,7 +24,7 @@ function loadPredefinedQuestion(url){
 	r.onreadystatechange = function () {
 		if (r.readyState != 4 || r.status != 200) return;
 		data = JSON.parse(r.responseText);
-		for(var i = 0; i < data.questions.length; ++i){
+		for(var i = 0; i < data.questions.length; ++i) {
 			/*cause template only generate string, i have to create outer element myself*/
 			var q = document.createElement('section');
 			q.id = 'q'+ (i + 1);
@@ -42,12 +44,12 @@ function changeQuestionType(){
 	//if qt1 = []? if qt2 = []?
 
 	//reload predefined questions
-	if(qt1.length == 0 && !this.checked){
+	if (qt1.length == 0 && !this.checked) {
 		loadPredefinedQuestion("qs.json");
 		return;
 	}
 
-	for(var i = 0; i < qt1.length; ++i){
+	for(var i = 0; i < qt1.length; ++i) {
 		qt1[i].style.display = this.checked ? "none" : "block";
 	}
 }
