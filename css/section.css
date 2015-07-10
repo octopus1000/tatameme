@@ -36,3 +36,10 @@ footer{
 .next-link .glyphicon{
 	font-size: 24px;
 }	
+
+/*toolbar at bottom*/
+#toolbar {
+	position: fixed;
+	bottom: 0;
+	z-index: 9;
+}

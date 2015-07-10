@@ -4,6 +4,29 @@ var qt2 = []; //user created questions
 
 window.addEventListener("load",init);
 
+/*function utilities*/
+var byId = function( id ) { return document.getElementById( id ); };
+var byClass = function(className) { return document.getElementsByClassName(className);};
+
+$.fn.serializeObject = function() {
+    var o = Object.create(null),
+        elementMapper = function(element) {
+            element.name = $.camelCase(element.name);
+            return element;
+        },
+        appendToResult = function(i, element) {
+            var node = o[element.name];
+
+            if ('undefined' != typeof node && node !== null) {
+                o[element.name] = node.push ? node.push(element.value) : [node, element.value];
+            } else {
+                o[element.name] = element.value;
+            }
+        };
+
+    $.each($.map(this.serializeArray(), elementMapper), appendToResult);
+    return o;
+};
 /*init funciton*/
 function init(){
 	//change question type
@@ -11,8 +34,8 @@ function init(){
 	//jquery function
 	$('#questionType').bootstrapToggle("off");
 	$('#questionType').change(changeQuestionType);
-	$('.t-btn-add').click(addNewAnswer);
-	$('.t-btn-next').click(addNewQuestion);
+	$('body').on('click', '.t-btn-add',addNewAnswer);
+	$('body').on('click', '.t-btn-next', addNewQuestion);
 	
 	//load predefined questions
 	//loadPredefinedQuestion("qs.json");
